@@ -12,7 +12,7 @@ void hashInit(void) {
 int hashAddress(char *text) {
   int addr = 1;
   int i;
-  for (i = 0; i < strlen(text); i++) {
+  for (i = 0; i < HASH_SIZE; i++) {
     addr = (addr * text[i]) % HASH_SIZE + 1;
   }
 
@@ -55,7 +55,7 @@ void hashPrint(void) {
   HASH_NODE *node;
   for (i = 0; i < HASH_SIZE; i++) {
     for (node = Table[i]; node; node = node->next) {
-      printf("Table[%d] has %s\n", i, node->text);
+      printf("Table[%d] has (%s, type %i)\n", i, node->text, node->type);
     }
   }
 }
