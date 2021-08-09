@@ -44,7 +44,7 @@
 "!="                            { return OPERATOR_DIF; }
 ".."                            { return OPERATOR_RANGE; }
 
-[a-zA-Z]+[a-zA-Z0-9 ]*[a-zA-Z0-9]  { hashInsert(yytext, TK_IDENTIFIER); return TK_IDENTIFIER; }
+[a-zA-Z]+[a-zA-Z0-9 ]*[a-zA-Z0-9]+|[a-zA-Z]+  { hashInsert(yytext, TK_IDENTIFIER); return TK_IDENTIFIER; }
 
 [0-9]+[0-9]*                    { hashInsert(yytext, LIT_INTEGER); return LIT_INTEGER; }
 "\'"."\'"                       { hashInsert(yytext, LIT_CHAR); return LIT_CHAR; }
