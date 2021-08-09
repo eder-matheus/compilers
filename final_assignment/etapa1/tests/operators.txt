@@ -1,0 +1,6 @@
+4 <= 5
+10 >= 6
+"asd" == "asd"
+"asdfe rwe \" fapsdif" != 'w'
+4 .. 5
+

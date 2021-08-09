@@ -1,0 +1,4 @@
+asd = 12
+a12f = 'a'
+a  asdf8  = "erzgs"
+b       90 <= 5346
