@@ -12,7 +12,7 @@ void hashInit(void) {
 int hashAddress(char *text) {
   int addr = 1;
   int i;
-  for (i = 0; i < HASH_SIZE; i++) {
+  for (i = 0; i < strlen(text); i++) {
     addr = (addr * text[i]) % HASH_SIZE + 1;
   }
 
