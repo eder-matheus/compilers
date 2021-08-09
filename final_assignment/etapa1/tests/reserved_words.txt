@@ -8,6 +8,10 @@ data f  2 = 34;
 char c = 'a';
 int counter = 0;
 float f = 0;
+data	f  2 = 34;
+char	c = 'a';
+int	counter = 0;
+float	f = 0;
 
 until (counter < 100) {
   read (a, 10*a);

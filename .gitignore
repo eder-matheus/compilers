@@ -53,6 +53,7 @@ dkms.conf
 
 # MacOS files
 .DS_Store
+*.swp
 
 # Build files
 lex.yy.c
