@@ -22,7 +22,7 @@
 
 %%
 
-[,;:()\[\]{}+-]|[\*]|[/<>|&~=] return yytext[0];
+[,;:()\[\]{}+-]|[\*]|[/<>|&~=]  {hashInsert(yytext, (int)yytext[0]); return yytext[0]; }
 
 "char"                          { return KW_CHAR; }
 "int"                           { return KW_INT; }
