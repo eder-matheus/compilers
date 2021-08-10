@@ -48,7 +48,7 @@
 
 [0-9]+[0-9]*                    { hashInsert(yytext, LIT_INTEGER); return LIT_INTEGER; }
 "\'"."\'"                       { hashInsert(yytext, LIT_CHAR); return LIT_CHAR; }
-\"([^\\\"]|\\.)*\"              { hashInsert(yytext, LIT_STRING); return LIT_STRING; }
+\"([^\\\"\n]|\\.)*\"              { hashInsert(yytext, LIT_STRING); return LIT_STRING; }
 
 
 
