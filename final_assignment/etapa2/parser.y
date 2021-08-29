@@ -1,7 +1,3 @@
-%{
-int yyerror ();
-%}
-
 %token KW_CHAR
 %token KW_INT
 %token KW_FLOAT
@@ -29,31 +25,90 @@ int yyerror ();
 
 %token TOKEN_ERROR
 
+%{
+int yyerror ();
+%}
+
+%left '|' '&'
+%left '<' '>' OPERATOR_LE OPERATOR_GE OPERATOR_EQ OPERATOR_DIF
+%left '+' '-'
+%left '*' '/'
+%left '~'
+
 %%
 
-programa: decl
+program: declist
   ;
 
-decl: dec rest
+declist: data
+  | data funclist
   |
   ;
 
-rest: ',' dec rest 
+data: KW_DATA '{' vardeclist '}'
+
+vardeclist: vardec ';' vardeclist
   |
   ;
 
-dec: KW_INT TK_IDENTIFIER
-  | KW_INT TK_IDENTIFIER '(' ')' body
+vardec: type ':' TK_IDENTIFIER '=' LIT_INTEGER
+  | type ':' TK_IDENTIFIER '=' LIT_CHAR
+  | vector
   ;
 
-body: '{' lcmd '}'
+vector: type '[' LIT_INTEGER OPERATOR_RANGE LIT_INTEGER ']' ':' TK_IDENTIFIER
+  | type '[' LIT_INTEGER OPERATOR_RANGE LIT_INTEGER ']' ':' TK_IDENTIFIER '=' vectordeclaration
   ;
 
-lcmd: cmd lcmd
+vectordeclaration: LIT_INTEGER vectordeclaration
+  | LIT_CHAR vectordeclaration
   |
   ;
 
-cmd: TK_IDENTIFIER '=' expr
+funclist: func funclist
+  |
+  ;
+
+func: type ':' TK_IDENTIFIER '(' ')' cmd_block
+  | type ':' TK_IDENTIFIER '(' parameter parameterlist ')' cmd_block
+  ;
+
+parameterlist: ',' parameter parameterlist
+  |
+  ;
+
+parameter: type ':' TK_IDENTIFIER
+
+cmd_block: '{' cmd lcmd '}'
+  ;
+
+lcmd: ';' cmd lcmd
+  |
+  ;
+
+cmd: TK_IDENTIFIER 
+  | TK_IDENTIFIER '=' expr
+  | TK_IDENTIFIER '[' expr ']' '=' expr
+  | KW_PRINT printelement printlist
+  | KW_RETURN expr
+  | KW_IF expr cmd_block
+  | KW_IF expr cmd
+  | KW_IF expr cmd_block KW_ELSE cmd_block
+  | KW_IF expr cmd_block KW_ELSE cmd
+  | KW_IF expr cmd KW_ELSE cmd
+  | KW_UNTIL expr cmd_block
+  | KW_UNTIL expr cmd
+  | cmd_block
+  | KW_COMEFROM ':' TK_IDENTIFIER
+  |
+  ;
+
+printlist: ',' printelement printlist
+  |
+  ;
+
+printelement: LIT_STRING
+  | expr
   ;
 
 expr: LIT_INTEGER
@@ -78,12 +133,17 @@ expr: LIT_INTEGER
   | funccall
   ;
 
-funccall: returntype ':' TK_IDENTIFIER '(' ')'
-  | returntype ':' TK_IDENTIFIER '(' ')' expr exprlist
+funccall: TK_IDENTIFIER '(' ')'
+  | TK_IDENTIFIER '(' expr exprlist ')'
   ;
 
 exprlist: ',' expr exprlist
   |
+  ;
+
+type: KW_CHAR
+  | KW_INT
+  | KW_FLOAT
   ;
 
 %%
