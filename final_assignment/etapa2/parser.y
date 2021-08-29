@@ -40,8 +40,7 @@ int yyerror ();
 program: declist
   ;
 
-declist: data
-  | data funclist
+declist: data funclist
   |
   ;
 
@@ -79,10 +78,10 @@ parameterlist: ',' parameter parameterlist
 
 parameter: type ':' TK_IDENTIFIER
 
-cmd_block: '{' cmd lcmd '}'
+cmd_block: '{' cmd cmdlist '}'
   ;
 
-lcmd: ';' cmd lcmd
+cmdlist: ';' cmd cmdlist
   |
   ;
 
