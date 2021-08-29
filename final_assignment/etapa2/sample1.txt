@@ -16,7 +16,7 @@ This is a comment
 of multiple lines
 /#
 
-int: main ()
+int:main ()
   {
   a = 0;
   a = a - i;
@@ -42,6 +42,14 @@ int: main ()
 
   ;;;;;
   ;
+
+  {};
+
+  {
+    c = 1;
+    a = 123;
+    b = klq + 123 + ~crzd;
+  };
 
   if (a==15) 
     {
@@ -69,8 +77,3 @@ int: incn (int: x , int: n )
   {
   return (x+n);
   }
-
-
-  
-
-
