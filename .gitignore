@@ -57,3 +57,8 @@ dkms.conf
 
 # Build files
 lex.yy.c
+y.tab.c
+y.tab.h
+y.output
+final_assignment/etapa1/etapa1
+final_assignment/etapa2/etapa2
