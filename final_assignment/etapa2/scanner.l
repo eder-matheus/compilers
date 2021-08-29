@@ -5,6 +5,11 @@
   int Running = 1;
   int lineNumber =  1;
 
+  #define SYMBOL_LIT_INTEGER 1
+  #define SYMBOL_LIT_CHAR 2
+  #define SYMBOL_LIT_STRING 3
+  #define SYMBOL_IDENTIFIER 7
+
   int isRunning(void) {
     return Running;
   }
@@ -44,11 +49,11 @@
 "!="                            { return OPERATOR_DIF; }
 ".."                            { return OPERATOR_RANGE; }
 
-[a-zA-Z]+[a-zA-Z0-9 ]*[a-zA-Z0-9]+|[a-zA-Z]+  { hashInsert(yytext, TK_IDENTIFIER); return TK_IDENTIFIER; }
+[a-zA-Z]+[a-zA-Z0-9 ]*[a-zA-Z0-9]+|[a-zA-Z]+  { hashInsert(yytext, SYMBOL_IDENTIFIER); return TK_IDENTIFIER; }
 
-[0-9]+[0-9]*                    { hashInsert(yytext, LIT_INTEGER); return LIT_INTEGER; }
-"\'"."\'"                       { hashInsert(yytext, LIT_CHAR); return LIT_CHAR; }
-\"([^\\\"\n]|\\.)*\"              { hashInsert(yytext, LIT_STRING); return LIT_STRING; }
+[0-9]+[0-9]*                    { hashInsert(yytext, SYMBOL_LIT_INTEGER); return LIT_INTEGER; }
+"\'"."\'"                       { hashInsert(yytext, SYMBOL_LIT_CHAR); return LIT_CHAR; }
+\"([^\\\"\n]|\\.)*\"              { hashInsert(yytext, SYMBOL_LIT_STRING); return LIT_STRING; }
 
 
 

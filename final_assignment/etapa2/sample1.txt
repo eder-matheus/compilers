@@ -60,6 +60,14 @@ int:main ()
   if ( a==15 | a==17 )
     print "A igual a 15 ou 17\n";
 
+
+  if (~a) {
+    print "nao a";
+  } else {
+    a = 0;
+    b = 1;
+  };
+
   if (i==100) 
     {
     print "Nao tem como isso...\n";
