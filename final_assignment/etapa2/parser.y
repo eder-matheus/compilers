@@ -90,12 +90,8 @@ cmd: TK_IDENTIFIER
   | TK_IDENTIFIER '[' expr ']' '=' expr
   | KW_PRINT printelement printlist
   | KW_RETURN expr
-  | KW_IF expr cmd_block
   | KW_IF expr cmd
-  | KW_IF expr cmd_block KW_ELSE cmd_block
-  | KW_IF expr cmd_block KW_ELSE cmd
   | KW_IF expr cmd KW_ELSE cmd
-  | KW_UNTIL expr cmd_block
   | KW_UNTIL expr cmd
   | cmd_block
   | KW_COMEFROM ':' TK_IDENTIFIER
