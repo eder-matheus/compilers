@@ -17,5 +17,7 @@ int main(int argc, char **argv) {
   yyparse();
 
   hashPrint();
+
+  printf("Compilation successfull \n");
   exit(0);
 }
