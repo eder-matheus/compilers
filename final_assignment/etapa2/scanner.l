@@ -5,11 +5,6 @@
   int Running = 1;
   int lineNumber =  1;
 
-  #define SYMBOL_LIT_INTEGER 1
-  #define SYMBOL_LIT_CHAR 2
-  #define SYMBOL_LIT_STRING 3
-  #define SYMBOL_IDENTIFIER 7
-
   int isRunning(void) {
     return Running;
   }

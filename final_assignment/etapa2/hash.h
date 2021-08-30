@@ -6,6 +6,10 @@
 #include <string.h>
 
 #define HASH_SIZE 997 // requires a prime number
+#define SYMBOL_LIT_INTEGER 1
+#define SYMBOL_LIT_CHAR 2
+#define SYMBOL_LIT_STRING 3
+#define SYMBOL_IDENTIFIER 7
 
 typedef struct hash_node {
   int type;
