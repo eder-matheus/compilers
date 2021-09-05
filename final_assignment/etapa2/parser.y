@@ -78,10 +78,10 @@ parameterlist: ',' parameter parameterlist
 
 parameter: type ':' TK_IDENTIFIER
 
-cmd_block: '{' cmd cmdlist '}'
+cmd_block: '{' cmdlist '}'
   ;
 
-cmdlist: ';' cmd cmdlist
+cmdlist: cmd ';' cmdlist
   |
   ;
 
