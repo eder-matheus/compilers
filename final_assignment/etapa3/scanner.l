@@ -25,10 +25,14 @@
 
 [,;:()\[\]{}+-]|[\*]|[/<>|&~=]  { return yytext[0]; }
 
-"char"                          { return KW_CHAR; }
-"int"                           { return KW_INT; }
-"float"                         { return KW_FLOAT; }
-"data"                          { return KW_DATA; }
+"char"                          { yylval.symbol = hashInsert(yytext, SYMBOL_KW_CHAR);
+                                  return KW_CHAR; }
+"int"                           { yylval.symbol = hashInsert(yytext, SYMBOL_KW_INT);
+                                  return KW_INT; }
+"float"                         { yylval.symbol = hashInsert(yytext, SYMBOL_KW_FLOAT);
+                                  return KW_FLOAT; }
+"data"                          { yylval.symbol = hashInsert(yytext, SYMBOL_KW_DATA);
+                                  return KW_DATA; }
 
 "if"                            { return KW_IF; }
 "else"                          { return KW_ELSE; }

@@ -42,6 +42,10 @@
 #define SYMBOL_LIT_CHAR 2
 #define SYMBOL_LIT_STRING 3
 #define SYMBOL_IDENTIFIER 7
+#define SYMBOL_KW_CHAR 8
+#define SYMBOL_KW_INT 9
+#define SYMBOL_KW_FLOAT 10
+#define SYMBOL_KW_DATA 11
 
 typedef struct hash_node {
   int type;
