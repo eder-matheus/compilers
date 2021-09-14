@@ -35,7 +35,7 @@
 #include <stdlib.h>
 
 AST *astCreate(int type, HASH_NODE *symbol, AST *s0, AST *s1, AST *s2,
-               AST *s3, AST *s4) {
+               AST *s3) {
   AST *new_node = (AST *)calloc(1, sizeof(AST));
   new_node->type = type;
   new_node->symbol = symbol;
@@ -43,8 +43,15 @@ AST *astCreate(int type, HASH_NODE *symbol, AST *s0, AST *s1, AST *s2,
   new_node->son[1] = s1;
   new_node->son[2] = s2;
   new_node->son[3] = s3;
-  new_node->son[4] = s4;
   return new_node;
+}
+
+AST *createSymbol(HASH_NODE * symbol) {
+  return astCreate(AST_SYMBOL, symbol, 0, 0, 0, 0);
+}
+
+AST *createList(int type, AST *head, AST* tail) {
+  return astCreate(type, 0, head, tail, 0, 0);
 }
 
 void astPrint(AST *node, int level) {

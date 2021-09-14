@@ -35,7 +35,7 @@
 #ifndef AST_HEADER
 #define AST_HEADER
 
-#define MAX_SONS 5
+#define MAX_SONS 4
 
 #define AST_SYMBOL 1
 
@@ -103,7 +103,9 @@ typedef struct ast_node {
   struct ast_node *son[MAX_SONS];
 } AST;
 
-AST *astCreate(int type, HASH_NODE *symbol, AST *s0, AST *s1, AST *s2, AST *s3, AST *s4);
+AST *astCreate(int type, HASH_NODE *symbol, AST *s0, AST *s1, AST *s2, AST *s3);
+AST *createList(int type, AST *head, AST* tail);
+AST *createSymbol(HASH_NODE * symbol);
 void astPrint(AST *node, int level);
 
 #endif
