@@ -102,8 +102,8 @@ vector: type '[' LIT_INTEGER OPERATOR_RANGE LIT_INTEGER ']' ':' TK_IDENTIFIER   
     }
   ;
 
-vectordeclaration: LIT_INTEGER vectordeclaration  { $$ = astCreate(AST_VECTOR_DECLARATION, 0, (createSymbol($1)), $2, 0, 0); }
-  | LIT_CHAR vectordeclaration                    { $$ = astCreate(AST_VECTOR_DECLARATION, 0, (createSymbol($1)), $2, 0, 0); }
+vectordeclaration: LIT_INTEGER vectordeclaration  { $$ = astCreate(AST_VECTOR_INIT, 0, (createSymbol($1)), $2, 0, 0); }
+  | LIT_CHAR vectordeclaration                    { $$ = astCreate(AST_VECTOR_INIT, 0, (createSymbol($1)), $2, 0, 0); }
   |                                               { $$ = 0; }
   ;
 
@@ -149,7 +149,7 @@ printlist: ',' printelement printlist   { $$ = createList(AST_PRINTLIST, $2, $3)
   ;
 
 printelement: LIT_STRING          { $$ = createSymbol($1); }
-  | expr                          { $$ = astCreate(AST_PRINTLIST, 0, $1, 0, 0, 0); }
+  | expr                          { $$ = astCreate(AST_PRINT_ELEMENT, 0, $1, 0, 0, 0); }
   ;
 
 expr: LIT_INTEGER                 { $$ = createSymbol($1); }

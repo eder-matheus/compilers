@@ -82,8 +82,8 @@
 #define AST_EXPRLIST 33
 #define AST_PRINTLIST 34
 #define AST_PARAMETERLIST 35
-#define AST_FUNCLIST 35
-#define AST_VARDECLIST 36
+#define AST_FUNCLIST 36
+#define AST_VARDECLIST 37
 
 #define AST_FUNC_CALL 40
 #define AST_FUNC_CALL_PARMS 41
@@ -93,9 +93,10 @@
 #define AST_ATTR_VEC 44
 #define AST_CMD_BLOCK 45
 #define AST_VECTOR_DECLARATION 46
+#define AST_VECTOR_INIT 50
 #define AST_VARDEC 47
 #define AST_DATA 48
-
+#define AST_PRINT_ELEMENT 49
 
 typedef struct ast_node {
   int type;
@@ -104,8 +105,8 @@ typedef struct ast_node {
 } AST;
 
 AST *astCreate(int type, HASH_NODE *symbol, AST *s0, AST *s1, AST *s2, AST *s3);
-AST *createList(int type, AST *head, AST* tail);
-AST *createSymbol(HASH_NODE * symbol);
+AST *createList(int type, AST *head, AST *tail);
+AST *createSymbol(HASH_NODE *symbol);
 void astPrint(AST *node, int level);
 
 #endif
