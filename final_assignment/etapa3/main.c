@@ -30,8 +30,8 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#include "hash.h"
 #include "decompiler.h"
+#include "hash.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
     exit(2);
   }
 
-  FILE *out =fopen(argv[2], "w");;
+  FILE *out = fopen(argv[2], "w");
   if (out == 0) {
     fprintf(stderr, "Cannot open file %s\n", argv[2]);
     exit(2);

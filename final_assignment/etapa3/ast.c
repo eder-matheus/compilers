@@ -46,11 +46,11 @@ AST *astCreate(int type, HASH_NODE *symbol, AST *s0, AST *s1, AST *s2,
   return new_node;
 }
 
-AST *createSymbol(HASH_NODE * symbol) {
+AST *createSymbol(HASH_NODE *symbol) {
   return astCreate(AST_SYMBOL, symbol, 0, 0, 0, 0);
 }
 
-AST *createList(int type, AST *head, AST* tail) {
+AST *createList(int type, AST *head, AST *tail) {
   return astCreate(type, 0, head, tail, 0, 0);
 }
 
@@ -65,138 +65,138 @@ void astPrint(AST *node, int level) {
   fprintf(stderr, "ast(");
 
   switch (node->type) {
-    case AST_SYMBOL:
-      fprintf(stderr, "AST_SYMBOL");
-      break;
-    case AST_ADD:
-      fprintf(stderr, "AST_ADD");
-      break;
-    case AST_SUB:
-      fprintf(stderr, "AST_SUB");
-      break;
-    case AST_MULT:
-      fprintf(stderr, "AST_MULT");
-      break;
-    case AST_DIV:
-      fprintf(stderr, "AST_DIV");
-      break;
-    case AST_OR:
-      fprintf(stderr, "AST_OR");
-      break;
-    case AST_AND:
-      fprintf(stderr, "AST_AND");
-      break;
-    case AST_NOT:
-      fprintf(stderr, "AST_NOT");
-      break;
-    case AST_LESSER:
-      fprintf(stderr, "AST_LESSER");
-      break;
-    case AST_GREATER:
-      fprintf(stderr, "AST_GREATER");
-      break;
-    case AST_LE:
-      fprintf(stderr, "AST_LE");
-      break;
-    case AST_GE:
-      fprintf(stderr, "AST_GE");
-      break;
-    case AST_EQ:
-      fprintf(stderr, "AST_EQ");
-      break;
-    case AST_DIFF:
-      fprintf(stderr, "AST_DIFF");
-      break;
-    case AST_RANGE:
-      fprintf(stderr, "AST_RANGE");
-      break;
-    case AST_ATTR:
-      fprintf(stderr, "AST_ATTR");
-      break;
-    case AST_PRINT:
-      fprintf(stderr, "AST_PRINT");
-      break;
-    case AST_RETURN:
-      fprintf(stderr, "AST_RETURN");
-      break;
-    case AST_IF:
-      fprintf(stderr, "AST_IF");
-      break;
-    case AST_IF_ELSE:
-      fprintf(stderr, "AST_IF_ELSE");
-      break;
-    case AST_UNTIL:
-      fprintf(stderr, "AST_UNTIL");
-      break;
-    case AST_COMEFROM:
-      fprintf(stderr, "AST_COMEFROM");
-      break;
-    case AST_READ:
-      fprintf(stderr, "AST_READ");
-      break;
-    case AST_PARENTHESIS:
-      fprintf(stderr, "AST_PARENTHESIS");
-      break;
-    case AST_VEC_ACCESS:
-      fprintf(stderr, "AST_VEC_ACCESS");
-      break;
-    case AST_DECLIST:
-      fprintf(stderr, "AST_DECLIST");
-      break;
-    case AST_CMDLIST:
-      fprintf(stderr, "AST_CMDLIST");
-      break;
-    case AST_EXPRLIST:
-      fprintf(stderr, "AST_EXPRLIST");
-      break;
-    case AST_PRINTLIST:
-      fprintf(stderr, "AST_PRINTLIST");
-      break;
-    case AST_PARAMETERLIST:
-      fprintf(stderr, "AST_PARAMETERLIST");
-      break;
-    case AST_FUNCLIST:
-      fprintf(stderr, "AST_FUNCLIST");
-      break;
-    case AST_VARDECLIST:
-      fprintf(stderr, "AST_VARDECLIST");
-      break;
-    case AST_FUNC_CALL:
-      fprintf(stderr, "AST_FUNC_CALL");
-      break;
-    case AST_FUNC_CALL_PARMS:
-      fprintf(stderr, "AST_FUNC_CALL_PARMS");
-      break;
-    case AST_FUNC_DEC:
-      fprintf(stderr, "AST_FUNC_DEC");
-      break;
-    case AST_FUNC_DEC_PARMS:
-      fprintf(stderr, "AST_FUNC_DEC_PARMS");
-      break;
-    case AST_ATTR_VEC:
-      fprintf(stderr, "AST_ATTR_VEC");
-      break;
-    case AST_CMD_BLOCK:
-      fprintf(stderr, "AST_CMD_BLOCK");
-      break;
-    case AST_VECTOR_DECLARATION:
-      fprintf(stderr, "AST_VECTOR_DECLARATION");
-      break;
-    case AST_VECTOR_INIT:
-      fprintf(stderr, "AST_VECTOR_INIT");
-      break;
-    case AST_VARDEC:
-      fprintf(stderr, "AST_VARDEC");
-      break;
-    case AST_DATA:
-      fprintf(stderr, "AST_DATA");
-      break;
-    case AST_PARAMETER:
-      fprintf(stderr, "AST_PARAMETER");
-      break;
-    default:
-      fprintf(stderr, "AST_UNKNOWN");
-      break;
+  case AST_SYMBOL:
+    fprintf(stderr, "AST_SYMBOL");
+    break;
+  case AST_ADD:
+    fprintf(stderr, "AST_ADD");
+    break;
+  case AST_SUB:
+    fprintf(stderr, "AST_SUB");
+    break;
+  case AST_MULT:
+    fprintf(stderr, "AST_MULT");
+    break;
+  case AST_DIV:
+    fprintf(stderr, "AST_DIV");
+    break;
+  case AST_OR:
+    fprintf(stderr, "AST_OR");
+    break;
+  case AST_AND:
+    fprintf(stderr, "AST_AND");
+    break;
+  case AST_NOT:
+    fprintf(stderr, "AST_NOT");
+    break;
+  case AST_LESSER:
+    fprintf(stderr, "AST_LESSER");
+    break;
+  case AST_GREATER:
+    fprintf(stderr, "AST_GREATER");
+    break;
+  case AST_LE:
+    fprintf(stderr, "AST_LE");
+    break;
+  case AST_GE:
+    fprintf(stderr, "AST_GE");
+    break;
+  case AST_EQ:
+    fprintf(stderr, "AST_EQ");
+    break;
+  case AST_DIFF:
+    fprintf(stderr, "AST_DIFF");
+    break;
+  case AST_RANGE:
+    fprintf(stderr, "AST_RANGE");
+    break;
+  case AST_ATTR:
+    fprintf(stderr, "AST_ATTR");
+    break;
+  case AST_PRINT:
+    fprintf(stderr, "AST_PRINT");
+    break;
+  case AST_RETURN:
+    fprintf(stderr, "AST_RETURN");
+    break;
+  case AST_IF:
+    fprintf(stderr, "AST_IF");
+    break;
+  case AST_IF_ELSE:
+    fprintf(stderr, "AST_IF_ELSE");
+    break;
+  case AST_UNTIL:
+    fprintf(stderr, "AST_UNTIL");
+    break;
+  case AST_COMEFROM:
+    fprintf(stderr, "AST_COMEFROM");
+    break;
+  case AST_READ:
+    fprintf(stderr, "AST_READ");
+    break;
+  case AST_PARENTHESIS:
+    fprintf(stderr, "AST_PARENTHESIS");
+    break;
+  case AST_VEC_ACCESS:
+    fprintf(stderr, "AST_VEC_ACCESS");
+    break;
+  case AST_DECLIST:
+    fprintf(stderr, "AST_DECLIST");
+    break;
+  case AST_CMDLIST:
+    fprintf(stderr, "AST_CMDLIST");
+    break;
+  case AST_EXPRLIST:
+    fprintf(stderr, "AST_EXPRLIST");
+    break;
+  case AST_PRINTLIST:
+    fprintf(stderr, "AST_PRINTLIST");
+    break;
+  case AST_PARAMETERLIST:
+    fprintf(stderr, "AST_PARAMETERLIST");
+    break;
+  case AST_FUNCLIST:
+    fprintf(stderr, "AST_FUNCLIST");
+    break;
+  case AST_VARDECLIST:
+    fprintf(stderr, "AST_VARDECLIST");
+    break;
+  case AST_FUNC_CALL:
+    fprintf(stderr, "AST_FUNC_CALL");
+    break;
+  case AST_FUNC_CALL_PARMS:
+    fprintf(stderr, "AST_FUNC_CALL_PARMS");
+    break;
+  case AST_FUNC_DEC:
+    fprintf(stderr, "AST_FUNC_DEC");
+    break;
+  case AST_FUNC_DEC_PARMS:
+    fprintf(stderr, "AST_FUNC_DEC_PARMS");
+    break;
+  case AST_ATTR_VEC:
+    fprintf(stderr, "AST_ATTR_VEC");
+    break;
+  case AST_CMD_BLOCK:
+    fprintf(stderr, "AST_CMD_BLOCK");
+    break;
+  case AST_VECTOR_DECLARATION:
+    fprintf(stderr, "AST_VECTOR_DECLARATION");
+    break;
+  case AST_VECTOR_INIT:
+    fprintf(stderr, "AST_VECTOR_INIT");
+    break;
+  case AST_VARDEC:
+    fprintf(stderr, "AST_VARDEC");
+    break;
+  case AST_DATA:
+    fprintf(stderr, "AST_DATA");
+    break;
+  case AST_PARAMETER:
+    fprintf(stderr, "AST_PARAMETER");
+    break;
+  default:
+    fprintf(stderr, "AST_UNKNOWN");
+    break;
   }
 
   if (node->symbol != 0) {
