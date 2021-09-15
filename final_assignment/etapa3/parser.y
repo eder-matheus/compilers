@@ -4,6 +4,7 @@
   int yyerror ();
   int getLineNumber();
   int yylex();
+  AST *root = NULL;
 %}
 
 %union
@@ -68,7 +69,7 @@
 
 %%
 
-program: declist                               { $$ = $1; astPrint($1, 0); }
+program: declist                               { $$ = $1; root = $$; }
   ;
 
 declist: data funclist                         { $$ = createList(AST_DECLIST, $1, $2); }
@@ -83,27 +84,19 @@ vardeclist: vardec ';' vardeclist              { $$ = createList(AST_VARDECLIST,
 
 vardec: type ':' TK_IDENTIFIER '=' LIT_INTEGER { $$ = astCreate(AST_VARDEC, 0, $1, (createSymbol($3)), (createSymbol($5)), 0); }
   | type ':' TK_IDENTIFIER '=' LIT_CHAR        { $$ = astCreate(AST_VARDEC, 0, $1, (createSymbol($3)), (createSymbol($5)), 0); }
-  | vector                                     { $$ = astCreate(AST_VARDEC, 0, $1, 0, 0, 0); }
+  | vector                                     { $$ = $1;  }
   ;
 
 vector: type '[' LIT_INTEGER OPERATOR_RANGE LIT_INTEGER ']' ':' TK_IDENTIFIER   { 
-            $$ = astCreate(AST_VECTOR_DECLARATION, 0, $1, (
-            astCreate(AST_RANGE, 0, (
-              createSymbol($3)), (
-              createSymbol($5)), 0, 0)), 
-          (createSymbol($8)), 0);
+          $$ = astCreate(AST_VECTOR_DECLARATION, 0, $1, (astCreate(AST_RANGE, 0, (createSymbol($3)), (createSymbol($5)), 0, 0)), (createSymbol($8)), 0);
         }
-  | type '[' LIT_INTEGER OPERATOR_RANGE LIT_INTEGER ']' ':' TK_IDENTIFIER '=' vectordeclaration  { 
-        $$ = astCreate(AST_VECTOR_DECLARATION, 0, $1, (
-        astCreate(AST_RANGE, 0, (
-          createSymbol($3)), (
-          createSymbol($5)), 0, 0)), 
-      (createSymbol($8)), $10);
+  | type '[' LIT_INTEGER OPERATOR_RANGE LIT_INTEGER ']' ':' TK_IDENTIFIER '=' vectordeclaration  {
+      $$ = astCreate(AST_VECTOR_INIT, 0, $1, (astCreate(AST_RANGE, 0, (createSymbol($3)), (createSymbol($5)), 0, 0)), (createSymbol($8)), $10);
     }
   ;
 
-vectordeclaration: LIT_INTEGER vectordeclaration  { $$ = astCreate(AST_VECTOR_INIT, 0, (createSymbol($1)), $2, 0, 0); }
-  | LIT_CHAR vectordeclaration                    { $$ = astCreate(AST_VECTOR_INIT, 0, (createSymbol($1)), $2, 0, 0); }
+vectordeclaration: LIT_INTEGER vectordeclaration  { $$ = astCreate(AST_VECTOR_INIT_LIST, 0, (createSymbol($1)), $2, 0, 0); }
+  | LIT_CHAR vectordeclaration                    { $$ = astCreate(AST_VECTOR_INIT_LIST, 0, (createSymbol($1)), $2, 0, 0); }
   |                                               { $$ = 0; }
   ;
 
@@ -122,7 +115,7 @@ parameterlist: ',' parameter parameterlist { $$ = createList(AST_PARAMETERLIST, 
   |                                        { $$ = 0; }
   ;
 
-parameter: type ':' TK_IDENTIFIER          { $$ = astCreate(AST_PARAMETERLIST, 0, $1, (createSymbol($3)), 0, 0); }
+parameter: type ':' TK_IDENTIFIER          { $$ = astCreate(AST_PARAMETER, 0, $1, (createSymbol($3)), 0, 0); }
 
 cmd_block: '{' cmdlist '}'                { $$ = astCreate(AST_CMD_BLOCK, 0, $2, 0, 0, 0); }
   ;
@@ -149,7 +142,7 @@ printlist: ',' printelement printlist   { $$ = createList(AST_PRINTLIST, $2, $3)
   ;
 
 printelement: LIT_STRING          { $$ = createSymbol($1); }
-  | expr                          { $$ = astCreate(AST_PRINT_ELEMENT, 0, $1, 0, 0, 0); }
+  | expr                          { $$ = $1; }
   ;
 
 expr: LIT_INTEGER                 { $$ = createSymbol($1); }

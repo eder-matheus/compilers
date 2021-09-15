@@ -67,13 +67,7 @@
 #define AST_COMEFROM 22
 #define AST_READ 23
 
-#define AST_KW_CHAR 24
-#define AST_KW_INT 25
-#define AST_KW_FLOAT 26
-
 #define AST_PARENTHESIS 27
-#define AST_BRACKETS 28
-#define AST_KEYS 29
 
 #define AST_VEC_ACCESS 30
 
@@ -84,6 +78,7 @@
 #define AST_PARAMETERLIST 35
 #define AST_FUNCLIST 36
 #define AST_VARDECLIST 37
+#define AST_VECTOR_INIT_LIST 38
 
 #define AST_FUNC_CALL 40
 #define AST_FUNC_CALL_PARMS 41
@@ -96,7 +91,7 @@
 #define AST_VECTOR_INIT 50
 #define AST_VARDEC 47
 #define AST_DATA 48
-#define AST_PRINT_ELEMENT 49
+#define AST_PARAMETER 51
 
 typedef struct ast_node {
   int type;

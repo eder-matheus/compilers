@@ -31,17 +31,19 @@
 // POSSIBILITY OF SUCH DAMAGE.
 
 #include "hash.h"
+#include "decompiler.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 extern FILE *yyin;
+extern AST *root;
 int yyparse();
 void initMe();
 
 int main(int argc, char **argv) {
   initMe();
-  if (argc < 2) {
-    fprintf(stderr, "Call: etapa1 fileName\n");
+  if (argc < 3) {
+    fprintf(stderr, "Call: etapa3 inFileName outFileName\n");
     exit(1);
   }
 
@@ -51,9 +53,16 @@ int main(int argc, char **argv) {
     exit(2);
   }
 
+  FILE *out =fopen(argv[2], "w");;
+  if (out == 0) {
+    fprintf(stderr, "Cannot open file %s\n", argv[2]);
+    exit(2);
+  }
+
   yyparse();
 
   hashPrint();
+  decompile(root, out);
 
   printf("Compilation successfull \n");
   exit(0);

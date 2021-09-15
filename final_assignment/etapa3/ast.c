@@ -134,23 +134,8 @@ void astPrint(AST *node, int level) {
     case AST_READ:
       fprintf(stderr, "AST_READ");
       break;
-    case AST_KW_CHAR:
-      fprintf(stderr, "AST_KW_CHAR");
-      break;
-    case AST_KW_INT:
-      fprintf(stderr, "AST_KW_INT");
-      break;
-    case AST_KW_FLOAT:
-      fprintf(stderr, "AST_KW_FLOAT");
-      break;
     case AST_PARENTHESIS:
       fprintf(stderr, "AST_PARENTHESIS");
-      break;
-    case AST_BRACKETS:
-      fprintf(stderr, "AST_BRACKETS");
-      break;
-    case AST_KEYS:
-      fprintf(stderr, "AST_KEYS");
       break;
     case AST_VEC_ACCESS:
       fprintf(stderr, "AST_VEC_ACCESS");
@@ -206,8 +191,8 @@ void astPrint(AST *node, int level) {
     case AST_DATA:
       fprintf(stderr, "AST_DATA");
       break;
-    case AST_PRINT_ELEMENT:
-      fprintf(stderr, "AST_PRINT_ELEMENT");
+    case AST_PARAMETER:
+      fprintf(stderr, "AST_PARAMETER");
       break;
     default:
       fprintf(stderr, "AST_UNKNOWN");
