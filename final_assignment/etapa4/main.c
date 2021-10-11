@@ -43,7 +43,7 @@ void initMe();
 int main(int argc, char **argv) {
   initMe();
   if (argc < 3) {
-    fprintf(stderr, "Call: etapa3 inFileName outFileName\n");
+    fprintf(stderr, "Call: etapa4 inFileName outFileName\n");
     exit(1);
   }
 

@@ -7,8 +7,8 @@
 # and #include "main.c" in the last part of the scanner.l
 #
 
-etapa3: main.o lex.yy.o y.tab.o hash.o ast.o decompiler.o
-	gcc main.o lex.yy.o y.tab.o hash.o ast.o decompiler.o -o etapa3
+etapa4: main.o lex.yy.o y.tab.o hash.o ast.o decompiler.o
+	gcc main.o lex.yy.o y.tab.o hash.o ast.o decompiler.o -o etapa4
 
 main.o: main.c
 	gcc -c main.c
@@ -34,4 +34,4 @@ lex.yy.c: scanner.l y.tab.c
 	lex scanner.l
 
 clean:
-	rm lex.yy.c y.tab.c y.tab.h y.output *.o etapa3
+	rm lex.yy.c y.tab.c y.tab.h y.output *.o etapa4
