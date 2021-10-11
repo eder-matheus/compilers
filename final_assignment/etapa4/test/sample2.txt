@@ -1,0 +1,106 @@
+## UFRGS - Compiladores - Marcelo Johann - 2021/1
+
+data {
+  char: c ='x';
+  char: c c = 100;
+  char: c  c = 'x';
+  int: a = 'A';
+  int: i =  1;
+  int[0..9]: v = 0 0 0 0 0 0 0 0 0 0; 
+  int[4..9]: v = 0 0 0 0 0 0 0 0 0 0; 
+  int[0..9]: vileblood = 0 0 0 0 0 0 0 0 0 0; 
+  int [0..99]: mat ; 
+  float: f= 0;
+  float [4..66]: vec = 1 2 3 4 'k' 'm' 2;
+  char [4..5]: oi = 'l' 's' 1 'd' ;
+}
+
+#/
+This is a comment 
+of multiple lines
+/#
+
+int: main ()
+  {
+  a = 0;
+  a = a - i;
+  a = 5;
+  v[a] = 55;
+  print (v[5]);
+  print (a);
+  i = 2;
+  a = ~b;
+  b = ~(a+2);
+  vetor[31] = (40+tempo) < 0 & 5+ ~5 - time;
+
+  print "Digite um numero: \n";
+  a = read;
+
+  until (i==10)
+    {
+    i = incn(i,1);
+    a = incn(a,1);
+    };
+
+  until (i!=40)
+    print "Ola";
+
+  call = chama(1,s);
+
+  secao de ifs;
+
+  test = teste();
+
+  atrr = leia(read);
+
+  print "Incrementado algumas vezes a fica " , a ,"\n";
+
+  comefrom: secao de ifs;
+
+  if (~(a==15)) 
+  {
+    print "A=15\n";
+    marca 1;
+  };
+
+  if ( a==~15 | a==17 )
+    print "A igual a 15 ou 17\n";
+
+  if (i==100) 
+  {
+    print "Nao tem como isso...\n";
+  }
+  else
+    print "OK!\n";
+
+  if (a)
+    print "hi" 
+  else
+    print "bye";
+
+  if (a+b > 34)
+  {
+    soma = 19 + add(3,a,b);
+    if(a>b) {
+      print (oi);
+    }
+    else {
+      return ~true;
+    };
+  };
+  
+  comefrom: marca 1;
+
+  {
+    bloco avulso;
+    {};
+  };
+
+  }
+
+int: incn (int: x , int: n )
+  {
+    return (x+n);
+  }
+
+float: func (float: a){}
