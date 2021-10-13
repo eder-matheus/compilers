@@ -32,6 +32,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
   #include "hash.h"
   #include "ast.h"
+  #include "semantic.h"
   int yyerror ();
   int getLineNumber();
   int yylex();
@@ -100,7 +101,7 @@
 
 %%
 
-program: declist                               { $$ = $1; root = $$; }
+program: declist                               { $$ = $1; root = $$; semanticVerification(root); }
   ;
 
 declist: data funclist                         { $$ = createList(AST_DECLIST, $1, $2); }

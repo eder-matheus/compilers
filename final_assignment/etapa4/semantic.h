@@ -30,55 +30,71 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef HASH_HEADER
-#define HASH_HEADER
+#ifndef SEMANTIC_HEADER
+#define SEMANTIC_HEADER
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define HASH_SIZE 997 // requires a prime number
-#define SYMBOL_LIT_INTEGER 1
-#define SYMBOL_LIT_CHAR 2
-#define SYMBOL_LIT_STRING 3
-#define SYMBOL_IDENTIFIER 7
-#define SYMBOL_KW_CHAR 8
-#define SYMBOL_KW_INT 9
-#define SYMBOL_KW_FLOAT 10
-#define SYMBOL_KW_DATA 11
-#define SYMBOL_VARIABLE 12
-#define SYMBOL_VECTOR 13
-#define SYMBOL_FUNCTION 14
-#define SYMBOL_COMEFROM 21
-#define DATATYPE_CHAR 15
-#define DATATYPE_INTEGER 16
-#define DATATYPE_FLOAT 17
-#define DATATYPE_STRING 18
-#define DATATYPE_BOOL 19
-#define DATATYPE_COMEFROM 20
+#include "ast.h"
 
-typedef struct parameter {
-  int type;
-  int data_type;
-  struct parameter *next;
-} PARAMETER;
+int semantic_errors_count;
 
-typedef struct hash_node {
-  int type;
-  int data_type;
-  char *text;
-  struct hash_node *next;
-  // only for functions with parameters
-  struct parameter *parameters;
-} HASH_NODE;
+void semanticVerification(AST *node);
 
-extern HASH_NODE *Table[HASH_SIZE];
+void updateDeclarations(AST *node);
 
-void hashInit(void);
-int hashAddress(char *text);
-HASH_NODE *hashFind(char *text);
-HASH_NODE *hashInsert(char *text, int type);
-void addParameter(HASH_NODE *node, int type, int data_type);
-void hashPrint(void);
+void findUndeclaredIdentifiers();
+
+void checkVariableDeclaration(AST *node);
+
+void checkVectorInitialization(AST *node);
+
+void checkAttribution(AST *node);
+
+void checkVectorAttribution(AST *node);
+
+void checkNumericalAndComparatorOperator(AST *node);
+
+void checkLogicalOperator(AST *node);
+
+void checkNotOperator(AST *node);
+
+void checkEqualDiffOperator(AST *node);
+
+void checkVectorAccess(AST *node);
+
+void checkIfElseUntil(AST *node);
+
+void checkFunctionCall(AST *node);
+
+void checkFunctionWithParamsCall(AST *node);
+
+void checkSymbol(AST *node);
+
+void checkReturnOperator(AST *node);
+
+void verifyOperand(AST *node, int ignore);
+
+int detectDeclarationDataType(int type);
+
+int detectLiteralDataType(int type);
+
+int areTypesCompatible(int type1, int type2);
+
+int getSymbolType(AST *node);
+
+int getNumericalOperatorsType(AST *node);
+
+int getLogicalOperatorsType(AST *node);
+
+int getNotType(AST *node);
+
+int getComparatorOperatorsType(AST *node);
+
+int getEqualDiffType(AST *node);
+
+int getType(AST *node);
 
 #endif

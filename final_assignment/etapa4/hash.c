@@ -75,11 +75,29 @@ HASH_NODE *hashInsert(char *text, int type) {
   node->type = type;
   node->text = (char *)calloc(strlen(text) + 1, sizeof(char));
   strcpy(node->text, text);
+  node->parameters = NULL;
 
   // The new node will be the head of the linked list
   node->next = Table[addr];
   Table[addr] = node;
   return node;
+}
+
+void addParameter(HASH_NODE *node, int type, int data_type) {
+  PARAMETER *param;
+  param = (PARAMETER *)calloc(1, sizeof(PARAMETER));
+  param->type = type;
+  param->data_type = data_type;
+  if (node->parameters != NULL) {
+    PARAMETER *param_list = node->parameters;
+    while (param_list->next != NULL) {
+      param_list = param_list->next;
+    }
+
+    param_list->next = param;
+  } else {
+    node->parameters = param;
+  }
 }
 
 void hashPrint(void) {

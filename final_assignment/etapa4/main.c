@@ -32,6 +32,7 @@
 
 #include "decompiler.h"
 #include "hash.h"
+#include "semantic.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -64,6 +65,12 @@ int main(int argc, char **argv) {
   hashPrint();
   decompile(root, out);
 
+  if (semantic_errors_count > 0) {
+    fprintf(stderr, "Compilation ended with %d semantic errors\n",
+            semantic_errors_count);
+    exit(4);
+  }
+
   printf("Compilation successfull \n");
-  exit(0);
+  return 0;
 }
