@@ -33,6 +33,7 @@
   #include "hash.h"
   #include "ast.h"
   #include "semantic.h"
+  #include "tacs.h"
   int yyerror ();
   int getLineNumber();
   int yylex();
@@ -101,7 +102,11 @@
 
 %%
 
-program: declist                               { $$ = $1; root = $$; semanticVerification(root); }
+program: declist                               { $$ = $1;
+                                                 root = $$;
+                                                 semanticVerification(root);
+                                                 tacPrintBackwards(generateCode($1));
+                                               }
   ;
 
 declist: data funclist                         { $$ = createList(AST_DECLIST, $1, $2); }

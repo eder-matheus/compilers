@@ -109,3 +109,17 @@ void hashPrint(void) {
     }
   }
 }
+
+HASH_NODE* makeTemp() {
+  static int serial = 0;
+  char buffer[256] = "";
+  sprintf(buffer, "mYWeeirT_emp%d", serial++);
+  return hashInsert(buffer, SYMBOL_VARIABLE);
+}
+
+HASH_NODE* makeLabel() {
+  static int serial = 0;
+  char buffer[256] = "";
+  sprintf(buffer, "mYLabule%d", serial++);
+  return hashInsert(buffer, SYMBOL_LABEL);
+}

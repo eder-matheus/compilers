@@ -56,6 +56,7 @@
 #define DATATYPE_STRING 18
 #define DATATYPE_BOOL 19
 #define DATATYPE_COMEFROM 20
+#define SYMBOL_LABEL 21
 
 typedef struct parameter {
   int type;
@@ -80,5 +81,7 @@ HASH_NODE *hashFind(char *text);
 HASH_NODE *hashInsert(char *text, int type);
 void addParameter(HASH_NODE *node, int type, int data_type);
 void hashPrint(void);
+HASH_NODE* makeTemp();
+HASH_NODE* makeLabel();
 
 #endif

@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
 
   yyparse();
 
-  hashPrint();
+  // hashPrint();
   decompile(root, out);
 
   if (semantic_errors_count > 0) {
