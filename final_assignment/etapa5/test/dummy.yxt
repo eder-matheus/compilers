@@ -1,24 +1,47 @@
 ## UFRGS - Compiladores - Marcelo Johann - 2021/1
 
 data {
-char: c ='x';
-char: c c = 100;
-char: c  c = 'x';
+int: b = 0;
+int: x = 0;
 int: a = 'A';
-int: i =  1;
-int[0..9]: v = 0 0 0 0 0 0 0 0 0 0; 
-int [0..99]: mat ; 
-float: f= 0;
+float: f long = 0;
+char: w = 'a';
 }
 
-#/
-This is a comment 
-of multiple lines
-/#
+int: incn (int: o , int: n )
+  {
+    return (o+n);
+    return (o-n);
+    return (o*n);
+    return (o/n);
+  }
 
 int: main ()
 {
+  x = a + b;
   a = 5;
   b = 777;
-  x = 99 + b - x + 1111;
+  x = 99 + b - x * 1111 / 10;
+
+  if ((a + 0) >= 15) a = 555;
+
+  if (~(b > 777))
+    print "Incrementado algumas vezes a fica " , a ,"\n";
+
+  if ((a + 5) <= 1)
+    a = 5
+  else
+    a = 10; 
+
+  b = incn(13, 6);
+  f long = long function(f long, w, b, f long, w);
+}
+
+float: long function (float: l, char: r, int: g, float: t, char: h){
+  until (g!=40) {
+    l = t * h;
+    r = read;
+  };
+
+  return(l);
 }
