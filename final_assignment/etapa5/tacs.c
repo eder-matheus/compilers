@@ -369,6 +369,9 @@ TAC *generateCode(AST *node) {
   case AST_UNTIL:
     res = makeUntil(code[0], code[1]);
     break;
+  case AST_COMEFROM:
+    res = makeComefrom(code[0]);
+    break;
   case AST_READ:
     res = tacCreate(TAC_READ, NULL, NULL, NULL);
     break;
