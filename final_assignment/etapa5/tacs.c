@@ -111,15 +111,6 @@ void tacPrint(TAC *tac) {
   case TAC_RETURN:
     printf("TAC_RETURN");
     break;
-  case TAC_IF:
-    printf("TAC_IF");
-    break;
-  case TAC_IF_ELSE:
-    printf("TAC_IF_ELSE");
-    break;
-  case TAC_UNTIL:
-    printf("TAC_UNTIL");
-    break;
   case TAC_READ:
     printf("TAC_READ");
     break;
