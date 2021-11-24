@@ -67,3 +67,6 @@ etapa4/etapa4
 etapa5/etapa5
 etapa6/etapa6
 etapa7/etapa7
+
+# Log files
+*.log
