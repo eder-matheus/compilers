@@ -373,7 +373,7 @@ TAC *generateCode(AST *node) {
     res = makeComefrom(code[0]);
     break;
   case AST_READ:
-    res = tacCreate(TAC_READ, NULL, NULL, NULL);
+    res = tacCreate(TAC_READ, makeTemp(), NULL, NULL);
     break;
 
   // function declaration
